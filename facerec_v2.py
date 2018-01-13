@@ -13,7 +13,7 @@ from tkinter import messagebox
 import tkinter as tki
 import cv2
 import csv
-import sys
+
 haar_file="haarcascade_frontalface_default.xml"
 data_dir="data"
 label_filename="labels.csv"
@@ -185,18 +185,16 @@ class FaceRec(object):
                     self.panel.image=image
         except RuntimeError as e:
             print(str(e))
-        print("End of video loop")
+        
     def onClose(self):
         
         self.stopEvent.set()
-        print("stop event set")
+
         self.vs.release()
-        print("cv2 released")
-        
+      
         
         self.root.destroy()
-        
-        print("tk destroyed")
+
         
 if __name__=="__main__":
     if os.path.isdir(data_dir) is False:
@@ -212,4 +210,3 @@ if __name__=="__main__":
     app=FaceRec(vs,output_dir)
     app.root.mainloop()
     
-    #sys.exit()
